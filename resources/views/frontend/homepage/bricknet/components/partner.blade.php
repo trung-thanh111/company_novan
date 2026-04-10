@@ -6,7 +6,6 @@
             text-align: center;
         }
 
-        /* title đồng bộ theo hệ bricknet-home.css */
         .bn-partners__title {
             font-size: 3rem;
             margin-bottom: 0;
@@ -31,7 +30,6 @@
             background: transparent;
         }
 
-        /* default grayscale, hover show màu gốc */
         .bn-partners__item img {
             max-width: 100%;
             max-height: 56px;
@@ -84,8 +82,6 @@
             const el = document.querySelector('[data-bn-partners-swiper]');
             if (!el || typeof Swiper === 'undefined') return;
 
-            // auto-scroll continuous
-            // eslint-disable-next-line no-new
             new Swiper(el, {
                 slidesPerView: 'auto',
                 spaceBetween: 18,
