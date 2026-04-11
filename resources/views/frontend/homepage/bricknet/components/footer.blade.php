@@ -14,10 +14,7 @@
             <div>
                 <h3 class="bn-footer__title">Công ty</h3>
                 <ul class="bn-footer__links">
-                    <li><a href="/">Trang chủ</a></li>
-                    <li><a href="/gioi-thieu.html">Giới thiệu</a></li>
-                    <li><a href="/du-an.html">Dự án</a></li>
-                    <li><a href="#">Bản tin</a></li>
+                    {!! $menu['main-menu'] !!}
                 </ul>
             </div>
             

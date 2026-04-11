@@ -49,7 +49,7 @@ require __DIR__ . '/web/project.route.php';
 /* FRONTEND ROUTES  */
 Route::group(['middleware' => ['locale']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
-    Route::get('bat-dong-san.html', [AboutController::class, 'index'])->name('about.index');
+    Route::get('gioi-thieu.html', [AboutController::class, 'index'])->name('about.index');
     Route::get('thu-vien-anh.html', [GalleryController::class, 'index'])->name('fe.gallery.index');
     Route::get('tien-nghi.html', [AmenitiesController::class, 'index'])->name('amenities.index');
     Route::get('xung-quanh.html', [NeighbourhoodController::class, 'index'])->name('neighbourhood.index');

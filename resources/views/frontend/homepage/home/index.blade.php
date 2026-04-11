@@ -1,13 +1,5 @@
 @extends('frontend.homepage.layout')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('frontend/resources/css/bricknet-home.css') }}">
-@endpush
-
-@section('site_header')
-    @include('frontend.homepage.bricknet.components.header')
-@endsection
-
 @section('content')
     <main class="bn-page">
         @include('frontend.homepage.bricknet.components.hero')
@@ -22,8 +14,4 @@
         @include('frontend.homepage.bricknet.components.blog')
         @include('frontend.homepage.bricknet.components.cta')
     </main>
-@endsection
-
-@section('site_footer')
-    @include('frontend.homepage.bricknet.components.footer')
 @endsection

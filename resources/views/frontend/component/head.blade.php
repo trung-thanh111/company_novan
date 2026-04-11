@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/resources/style.css') }}">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-<link rel="stylesheet" href="{{ asset('frontend/resources/css/linden.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/resources/css/bricknet-home.css') }}">
 
 <script type="text/javascript">
     var BASE_URL = '{{ config('app.url') }}';

@@ -65,6 +65,10 @@ Trước khi code, xác định nhanh:
 [ ] Responsive đúng breakpoint đã xác định
 [ ] TÍnh đồng bộ nhất quán
 [ ] Tái sử dụng có sẵn k làm mới khi đã có
+[ ] khi có code theo ảnh thì chỉ quan tâm cấu trúc layout của giao diện nhé  (cấu trúc chuẩn từng px nhé)
+[ ] các section or title badge ... không mock từ đb ra phải việt hóa rõ ràng
+[] trước khi bàn giao phải k còn tồn tại lỗi
+
 ```
 
 lưu ý khi có sửa sau mỗi làn chạy note vào bên dưới này để sau này k gặp lại nữa
