@@ -27,13 +27,15 @@ class ServiceService extends BaseService implements ServiceServiceInterface
         $this->language = $this->currentLanguage();
     }
 
-    private function currentLanguage() {
+    private function currentLanguage()
+    {
         $locale = app()->getLocale();
         $language = \App\Models\Language::where('canonical', $locale)->first();
         return $language->id ?? 1;
     }
 
-    public function pagination($request){
+    public function pagination($request)
+    {
         $perPage = $request->integer('perpage');
         $condition = [
             'keyword' => addslashes($request->input('keyword')),
@@ -47,7 +49,7 @@ class ServiceService extends BaseService implements ServiceServiceInterface
             ['service_language as tb2', 'tb2.service_id', '=', 'services.id'],
             ['service_catalogue_service as tb3', 'services.id', '=', 'tb3.service_id'],
         ];
-        
+
         $services = $this->repository->pagination(
             [
                 'services.id',
@@ -125,7 +127,8 @@ class ServiceService extends BaseService implements ServiceServiceInterface
         return $this->save($request, 'update', $id);
     }
 
-    public function findById($id){
+    public function findById($id)
+    {
         return $this->repository->getServiceById($id, $this->language);
     }
 }

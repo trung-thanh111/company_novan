@@ -12,6 +12,6 @@
         @include('frontend.homepage.bricknet.components.testimonials')
         @include('frontend.homepage.bricknet.components.pricing')
         @include('frontend.homepage.bricknet.components.blog')
-        @include('frontend.homepage.bricknet.components.cta')
+        @include('frontend.component.cta')
     </main>
 @endsection

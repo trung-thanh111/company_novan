@@ -1,5 +1,5 @@
 @extends('frontend.homepage.layout')
-@section('header-class', 'header-inner')
+
 @section('content')
     <div id="scroll-progress"></div>
     <div class="linden-page">

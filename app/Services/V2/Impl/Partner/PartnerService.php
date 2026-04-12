@@ -26,13 +26,15 @@ class PartnerService extends BaseService implements PartnerServiceInterface
         $this->language = $this->currentLanguage();
     }
 
-    private function currentLanguage() {
+    private function currentLanguage()
+    {
         $locale = app()->getLocale();
         $language = \App\Models\Language::where('canonical', $locale)->first();
         return $language->id ?? 1;
     }
 
-    public function pagination($request){
+    public function pagination($request)
+    {
         $perPage = $request->integer('perpage');
         $condition = [
             'keyword' => addslashes($request->input('keyword')),
@@ -45,7 +47,7 @@ class PartnerService extends BaseService implements PartnerServiceInterface
         $join = [
             ['partner_language as tb2', 'tb2.partner_id', '=', 'partners.id'],
         ];
-        
+
         $records = $this->repository->pagination(
             [
                 'partners.id',
@@ -107,7 +109,8 @@ class PartnerService extends BaseService implements PartnerServiceInterface
         return $this->save($request, 'update', $id);
     }
 
-    public function findById($id){
+    public function findById($id)
+    {
         return $this->repository->getPartnerById($id, $this->language);
     }
 }

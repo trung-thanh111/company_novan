@@ -14,34 +14,50 @@
             <div>
                 <h3 class="bn-footer__title">Công ty</h3>
                 <ul class="bn-footer__links">
-                    {!! $menu['main-menu'] !!}
+                    @if(isset($menu['main-menu_array']))
+                        @foreach($menu['main-menu_array'] as $val)
+                            @php
+                                $name = $val['item']->languages->first()->pivot->name;
+                                $canonical = write_url($val['item']->languages->first()->pivot->canonical, true, true);
+                            @endphp
+                            <li><a href="{{ $canonical }}">{{ $name }}</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
             
             <div>
                 <h3 class="bn-footer__title">Mạng xã hội</h3>
                 <ul class="bn-footer__links">
-                    <li><a href="{{ $system['social_twitter'] ?? '#' }}">Twitter/X</a></li>
-                    <li><a href="{{ $system['social_instagram'] ?? '#' }}">Instagram</a></li>
-                    <li><a href="{{ $system['social_facebook'] ?? '#' }}">Facebook</a></li>
-                    <li><a href="{{ $system['social_pinterest'] ?? '#' }}">Pinterest</a></li>
-                    <li><a href="{{ $system['social_linkedin'] ?? '#' }}">LinkedIn</a></li>
+                    @php
+                        $socials = [
+                            'social_twitter' => 'Twitter/X',
+                            'social_instagram' => 'Instagram',
+                            'social_facebook' => 'Facebook',
+                            'social_pinterest' => 'Pinterest',
+                            'social_linkedin' => 'LinkedIn',
+                        ];
+                    @endphp
+                    @foreach($socials as $key => $label)
+                        @if(!empty($system[$key]))
+                            <li><a href="{{ $system[$key] }}" target="_blank">{{ $label }}</a></li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
             
             <div>
                 <h3 class="bn-footer__title">Hỗ trợ</h3>
                 <ul class="bn-footer__links">
-                    <li><a href="/lien-he.html">Liên hệ</a></li>
-                    <li><a href="#">Câu hỏi thường gặp</a></li>
-                    <li><a href="#">Trung tâm trợ giúp</a></li>
+                    @if(!empty($system['contact_hotline']))
+                        <li><a href="tel:{{ $system['contact_hotline'] }}">{{ $system['contact_hotline'] }}</a></li>
+                    @endif
+                    @if(!empty($system['contact_address']))
+                        <li><span style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6; display: block;">{{ $system['contact_address'] }}</span></li>
+                    @endif
+                    <li><a href="/lien-he.html">Gửi yêu cầu liên hệ</a></li>
                 </ul>
             </div>
-        </div>
-        
-        <div class="bn-footer-bottom">
-            <div>&copy; {{ date('Y') }} {{ $system['homepage_brand'] ?? 'Bricknet' }}. Bản quyền đã được bảo hộ</div>
-            <div><a href="#">Chính sách bảo mật</a> &amp; <a href="#">Điều khoản sử dụng</a></div>
         </div>
     </div>
 </footer>

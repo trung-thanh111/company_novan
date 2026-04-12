@@ -32,7 +32,7 @@
                                 <div class="project-slide">
                                     <!-- Left: Image with Overlay Description -->
                                     <div class="project-image-box">
-                                        <a href="{{ route('router.index', ['canonical' => $canonical]) }}">
+                                        <a href="{{ write_url($canonical) }}">
                                             <img src="{{ asset($project->image) }}" alt="{{ $name }}">
                                         </a>
                                         <div class="project-image-overlay-desc">
@@ -44,7 +44,7 @@
                                     <div class="project-info-box">
                                         <div class="project-category-pill">{{ $catalogueName }}</div>
                                         <h3 class="project-title-large">
-                                            <a href="{{ route('router.index', ['canonical' => $canonical]) }}">
+                                            <a href="{{ write_url($canonical) }}">
                                                 {{ $name }}
                                             </a>
                                         </h3>

@@ -52,6 +52,18 @@ class MenuComposer
                     $menus[$val->keyword] = frontend_recursive_menu($recursiveMenus, 0, 2, 'array');
                 }
             }
+        } else {
+            // Mock data fallback if database is empty
+            $mockData = [
+                ['item' => (object)['id' => 1, 'parent_id' => 0, 'languages' => collect([(object)['pivot' => (object)['name' => 'Trang chủ', 'canonical' => '']]])], 'children' => []],
+                ['item' => (object)['id' => 2, 'parent_id' => 0, 'languages' => collect([(object)['pivot' => (object)['name' => 'Giới thiệu', 'canonical' => 'gioi-thieu']]])], 'children' => []],
+                ['item' => (object)['id' => 3, 'parent_id' => 0, 'languages' => collect([(object)['pivot' => (object)['name' => 'Dịch vụ', 'canonical' => 'dich-vu']]])], 'children' => []],
+                ['item' => (object)['id' => 4, 'parent_id' => 0, 'languages' => collect([(object)['pivot' => (object)['name' => 'Dự án', 'canonical' => 'du-an']]])], 'children' => []],
+                ['item' => (object)['id' => 5, 'parent_id' => 0, 'languages' => collect([(object)['pivot' => (object)['name' => 'Liên hệ', 'canonical' => 'lien-he']]])], 'children' => []],
+            ];
+            $menus['main-menu'] = frontend_recursive_menu($mockData, 0, 2, 'html');
+            $menus['main-menu_array'] = $mockData;
+            $menus['mobile'] = $mockData;
         }
         return $menus;
     }

@@ -64,7 +64,7 @@ class PostCatalogueController extends FrontendController
             $request,
             $this->language,
             $postCatalogue,
-            $page,
+            $request->input('page', 1),
             ['path' => $postCatalogue->canonical],
             ['posts.recommend', 'desc']
         );
@@ -178,6 +178,7 @@ class PostCatalogueController extends FrontendController
             ->orderBy('id', 'asc')
             ->first();
 
+        $property = $this->postCatalogueRepository->getPostCatalogueById($postCatalogue->parent_id, $this->language);
         $template = 'frontend.post.post.index';
 
         return view($template, compact(
@@ -195,7 +196,8 @@ class PostCatalogueController extends FrontendController
             'readingTime',
             'previous',
             'next',
-            'items'
+            'items',
+            'property'
         ));
     }
 

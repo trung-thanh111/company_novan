@@ -468,7 +468,7 @@
                             </p>
                         </div>
                         <div>
-                            <a href="/du-an.html" class="bn-btn--custom bn-btn--outline-dark">
+                            <a href="{{ write_url('du-an') }}" class="bn-btn--custom bn-btn--outline-dark">
                                 KHÁM PHÁ TẤT CẢ DỰ ÁN <i class="fa fa-arrow-right"></i>
                             </a>
                         </div>
@@ -487,7 +487,7 @@
                             </div>
                             <div class="bn-project-card-v2__body">
                                 <h3 class="bn-project-card-v2__title">{{ $pName }}</h3>
-                                <a href="{{ route('router.index', ['canonical' => $pCanonical]) }}" class="bn-project-card-v2__link">
+                                <a href="{{ write_url($pCanonical) }}" class="bn-project-card-v2__link">
                                     Xem chi tiết <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -530,26 +530,9 @@
             </div>
         </section>
 
-        <!-- Refined Split CTA Section (Image 4 style) -->
-        <section class="bn-section-cta-split">
-            <div class="bn-container">
-                <div class="bn-cta-split-grid">
-                    <div class="bn-cta-split__left" data-reveal="left">
-                        <h2 class="bn-sec-title" style="font-size: 3rem; margin-bottom: 24px;">Sẵn sàng để kiến tạo <br> những giải pháp đột phá?</h2>
-                        <p class="bn-sec-desc" style="margin-bottom: 40px;">
-                            Liên hệ với đội ngũ chuyên gia của chúng tôi để bắt đầu hành trình chuyển đổi số toàn diện cho doanh nghiệp của bạn.
-                        </p>
-                        <div>
-                            <a href="/lien-he.html" class="bn-btn--custom bn-btn--custom-accent">
-                                Tư vấn ngay miễn phí <i class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bn-cta-split__right" style="background-image: url('{{ $ctaGallery->image ?? asset('frontend/resources/img/homely/slider/3.webp') }}');" data-reveal="right">
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('frontend.component.cta', [
+            'image' => $ctaGallery->image ?? asset('frontend/resources/img/homely/slider/3.webp')
+        ])
     </main>
 
     <script>

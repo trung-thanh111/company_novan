@@ -14,6 +14,7 @@ class VisitRequest extends Model
     use HasFactory, Notifiable, SoftDeletes, HasQuery;
 
     protected $fillable = [
+        'property_id',
         'service_id',
         'full_name',
         'email',
@@ -29,7 +30,7 @@ class VisitRequest extends Model
 
     protected $casts = [];
 
-    protected $relationable = ['users', 'services'];
+    protected $relationable = ['users', 'services', 'properties'];
 
     public function getRelationable()
     {
@@ -44,5 +45,10 @@ class VisitRequest extends Model
     public function services(): BelongsTo
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
+
+    public function properties(): BelongsTo
+    {
+        return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 }

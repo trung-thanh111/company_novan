@@ -77,6 +77,38 @@ class RouterController extends FrontendController
                 return;
             }
 
+            // Fallback for ServiceCatalogue
+            $serviceCatalogue = \App\Models\ServiceCatalogue::whereHas('languages', function ($q) use ($slug, $slugNoHtml) {
+                $q->where(function ($q2) use ($slug, $slugNoHtml) {
+                    $q2->where('service_catalogue_language.canonical', $slug)
+                        ->orWhere('service_catalogue_language.canonical', $slugNoHtml);
+                });
+            })->whereHas('languages', function ($q) {
+                $q->where('service_catalogue_language.language_id', $this->language);
+            })->first();
+
+            if ($serviceCatalogue) {
+                $controller = app(\App\Http\Controllers\Frontend\ServiceCatalogueController::class);
+                echo $controller->index($serviceCatalogue->id, $request);
+                return;
+            }
+
+            // Fallback for Service (Detail)
+            $service = \App\Models\Service::whereHas('languages', function ($q) use ($slug, $slugNoHtml) {
+                $q->where(function ($q2) use ($slug, $slugNoHtml) {
+                    $q2->where('service_language.canonical', $slug)
+                        ->orWhere('service_language.canonical', $slugNoHtml);
+                });
+            })->whereHas('languages', function ($q) {
+                $q->where('service_language.language_id', $this->language);
+            })->first();
+
+            if ($service) {
+                $controller = app(\App\Http\Controllers\Frontend\ServiceController::class);
+                echo $controller->index($service->id, $request);
+                return;
+            }
+
             abort(404);
         }
     }
@@ -116,11 +148,23 @@ class RouterController extends FrontendController
 
     public function getRouter($canonical)
     {
+        $suffix = config('apps.general.suffix');
+        $canonicalNoSuffix = str_ends_with($canonical, $suffix) ? substr($canonical, 0, -strlen($suffix)) : $canonical;
+        
         $this->router = $this->routerRepository->findByCondition(
             [
-                ['canonical', '=', $canonical],
+                ['canonical', '=', $canonicalNoSuffix],
                 ['language_id', '=', $this->language]
             ]
         );
+
+        if (!$this->router) {
+            $this->router = $this->routerRepository->findByCondition(
+                [
+                    ['canonical', '=', $canonical],
+                    ['language_id', '=', $this->language]
+                ]
+            );
+        }
     }
 }

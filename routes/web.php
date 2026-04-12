@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\VisitRequestController;
 use App\Http\Controllers\CrawlerController;
 use App\Http\Controllers\Frontend\PostCatalogueController;
 use App\Http\Controllers\Frontend\PostController;
+use App\Http\Controllers\Frontend\ServicePageController;
 
 //@@useController@@
 
@@ -51,8 +52,7 @@ Route::group(['middleware' => ['locale']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('gioi-thieu.html', [AboutController::class, 'index'])->name('about.index');
     Route::get('thu-vien-anh.html', [GalleryController::class, 'index'])->name('fe.gallery.index');
-    Route::get('tien-nghi.html', [AmenitiesController::class, 'index'])->name('amenities.index');
-    Route::get('xung-quanh.html', [NeighbourhoodController::class, 'index'])->name('neighbourhood.index');
+    Route::get('dich-vu.html', [ServicePageController::class, 'index'])->name('service-page.index');
     Route::get('lien-he.html', [ContactController::class, 'index'])->name('contact.index');
     Route::get('bai-viet.html', [PostController::class, 'index'])->name('post.index');
     Route::post('ajax/visit-request/store', [VisitRequestController::class, 'store'])->name('visit-request.store');

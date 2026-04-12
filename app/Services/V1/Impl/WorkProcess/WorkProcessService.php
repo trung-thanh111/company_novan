@@ -28,7 +28,8 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
         $this->language = $this->currentLanguage();
     }
 
-    private function currentLanguage() {
+    private function currentLanguage()
+    {
         $locale = app()->getLocale();
         $language = \App\Models\Language::where('canonical', $locale)->first();
         return $language->id ?? 1;
@@ -37,7 +38,8 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
     /**
      * V2 Pagination compatible with BaseService
      */
-    public function pagination(Request $request) {
+    public function pagination(Request $request)
+    {
         $perPage = $request->integer('perpage') ?? $this->perpage;
         $param = [
             'keyword' => addslashes($request->input('keyword')),
@@ -75,13 +77,13 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
     public function findByCondition($condition = [], $flag = false, $relation = [], $orderBy = ['id', 'desc'], $param = [], $withCount = [])
     {
         $languageId = 1;
-        foreach($condition as $key => $val){
-            if($val[0] == 'language_id'){
+        foreach ($condition as $key => $val) {
+            if ($val[0] == 'language_id') {
                 $languageId = $val[2];
                 unset($condition[$key]);
             }
         }
-        
+
         $param['language_id'] = $languageId;
         // If flag is true, we might want all records for a section
         if ($flag) {
@@ -89,14 +91,20 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
         }
 
         return $this->repository->getWorkProcessByCondition(
-            $condition, $flag, $relation, $orderBy, $param, $withCount
+            $condition,
+            $flag,
+            $relation,
+            $orderBy,
+            $param,
+            $withCount
         );
     }
 
     /**
      * Prepare data for V2 save() method
      */
-    protected function prepareModelData(): static {
+    protected function prepareModelData(): static
+    {
         $request = $this->context['request'] ?? null;
         if (!is_null($request)) {
             $this->modelData = $request->only(['image', 'publish', 'order']);
@@ -108,7 +116,8 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
     /**
      * Post-save logic for V2 save() method (handling pivot)
      */
-    public function afterSave(): static {
+    public function afterSave(): static
+    {
         parent::afterSave();
         $request = $this->context['request'] ?? null;
         if (!is_null($request) && isset($this->model)) {
@@ -118,7 +127,7 @@ class WorkProcessService extends BaseService implements WorkProcessServiceInterf
                 'description' => $request->input('description'),
                 'content' => $request->input('content'),
             ];
-            
+
             $this->model->languages()->detach($languageId);
             $this->repository->createPivot($this->model, $payloadLanguage, 'languages', $languageId);
         }

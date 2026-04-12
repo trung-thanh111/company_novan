@@ -4,20 +4,28 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\FrontendController;
 use App\Services\V2\Impl\RealEstate\PropertyService;
+use App\Services\V2\Interfaces\Company\ServiceServiceInterface as ServiceService;
 use App\Services\V2\Interfaces\Team\TeamServiceInterface as TeamService;
+use App\Services\V2\Interfaces\Faq\FaqServiceInterface as FaqService;
 use Illuminate\Http\Request;
 
 class ContactController extends FrontendController
 {
     protected $propertyService;
     protected $teamService;
+    protected $faqService;
+    protected $serviceService;
 
     public function __construct(
         PropertyService $propertyService,
-        TeamService $teamService
+        TeamService $teamService,
+        FaqService $faqService,
+        ServiceService $serviceService
     ) {
         $this->propertyService = $propertyService;
         $this->teamService = $teamService;
+        $this->faqService = $faqService;
+        $this->serviceService = $serviceService;
         parent::__construct();
     }
 
@@ -31,6 +39,20 @@ class ContactController extends FrontendController
             condition: [['publish', '=', 2]],
             flag: true
         );
+        $faqs = $this->faqService->findByCondition(
+            condition: [['publish', '=', 2]],
+            flag: true
+        );
+        $companyServices = $this->serviceService->findByCondition(
+            condition: [['publish', '=', 2]],
+            flag: true
+        );
+
+        $heroGallery = \App\Models\Gallery::whereHas('gallery_catalogues', function ($q) {
+            $q->whereHas('languages', function ($q2) {
+                $q2->where('gallery_catalogue_language.canonical', 'cong-ty');
+            });
+        })->where('publish', 2)->first();
 
         $system = $this->system;
         $seo = $this->buildSeo('Liên Hệ — Novan Vietnam');
@@ -44,6 +66,9 @@ class ContactController extends FrontendController
             'schema',
             'property',
             'agents',
+            'faqs',
+            'companyServices',
+            'heroGallery'
         ));
     }
 
