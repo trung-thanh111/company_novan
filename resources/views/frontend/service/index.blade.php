@@ -2,12 +2,10 @@
 
 
 @push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <style>
-        /* ── Hero ── */
         .bn-section-hero-static {
             position: relative;
-            padding: 160px 0 0;
+            padding: 140px 0 0;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -37,43 +35,6 @@
             font-size: 18px;
             margin-top: 20px;
         }
-
-        /* ── Labels & Badges ── */
-        .bn-pill-label {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 18px;
-            background: rgba(230, 92, 0, 0.08);
-            color: var(--bn-accent, #e65c00);
-            border: 1px solid rgba(230, 92, 0, 0.3);
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-        }
-        .bn-pill-label--outline {
-            background: transparent;
-            border-color: rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-        }
-
-        /* ── Standardized Button (Dark Primary) ── */
-        .bn-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            gap: 12px;
-            font-size: 15px;
-            border: none;
-            line-height: 1;
-        }
         .bn-btn--primary {
             background: #1e293b;
             color: #ffffff !important;
@@ -88,9 +49,11 @@
             font-size: 1.1em;
         }
         .bn-svc-slider-wrapper .bn-btn i,
+        .bn-svc-featured .bn-svc-card__footer .bn-btn i,
+        .bn-svc-portfolio .bn-svc-item__cta .bn-btn i,
         .svc-prev i, 
         .svc-next i {
-            color: var(--bn-accent, #e65c00) !important;
+            color: #ffffff !important;
         }
         .bn-btn--outline-nav {
             background: transparent;
@@ -118,10 +81,10 @@
         }
         .bn-svc-showcase__img-wrap {
             position: relative;
-            border-radius: 24px;
+            border-radius: var(--bn-radius-md);
             overflow: hidden;
             height: 540px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+            box-shadow: var(--bn-shadow-md);
         }
         .bn-svc-showcase__img-wrap img {
             width: 100%;
@@ -161,7 +124,7 @@
         }
         .bn-svc-card {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: var(--bn-radius-md);
             overflow: hidden;
             transition: all 0.4s ease;
             border: 1px solid #f1f5f9;
@@ -169,8 +132,8 @@
             flex-direction: column;
         }
         .bn-svc-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--bn-shadow-md);
         }
         .bn-svc-card__img {
             height: 280px;
@@ -212,7 +175,6 @@
             border-top: 1px solid #f1f5f9;
         }
 
-        /* ── Portfolio (Title Fix) ── */
         .bn-svc-portfolio {
             padding: 60px 0;
             background: #fff;
@@ -245,9 +207,9 @@
         }
         .bn-svc-item {
             position: relative;
-            border-radius: 24px;
+            border-radius: var(--bn-radius-md);
             overflow: hidden;
-            background: transparent; /* Fixed: no background leak */
+            background: transparent;
         }
         .bn-svc-item:nth-child(even) {
             margin-top: 80px;
@@ -323,7 +285,7 @@
         .bn-cta {
             background: #475569 !important; /* Slate-600 */
             text-align: center;
-            padding: 100px 0;
+            padding: var(--bn-section-padding);
             border-radius: 0;
         }
         .bn-cta__inner {
@@ -355,7 +317,7 @@
         @media (max-width: 768px) {
             .bn-svc-featured__grid { grid-template-columns: 1fr; }
             .bn-svc-showcase__title { font-size: 34px; }
-            .bn-svc-item__overlay { padding: 30px 30px 15px; }
+            .bn-svc-item__overlay { padding: 15px 15px 5px; }
             .bn-svc-item__title { font-size: 22px; }
             .bn-cta__title { font-size: 28px; }
         }
@@ -364,7 +326,6 @@
 
 @section('content')
 <main class="bn-page">
-    <!-- ============ HERO ============ -->
     <section class="bn-section-hero-static" style="background-image: url('{{ $heroGallery->image ?? asset('frontend/resources/img/homely/slider/3.webp') }}');">
         <div class="bn-container">
             <div class="bn-sec-head bn-sec-head--center">
@@ -377,11 +338,10 @@
         </div>
     </section>
 
-    <!-- ============ FEATURED SLIDER (MODERNIZED) ============ -->
     <section class="bn-svc-showcase">
         <div class="bn-container">
             <div class="bn-sec-head">
-                <span class="bn-pill-label">✦ Dự án trọng điểm</span>
+                <span class="bn-pill-label">Dự án</span>
                 <h2 class="bn-sec-title">Giải Pháp Tiên Phong</h2>
             </div>
 
@@ -414,8 +374,8 @@
                     </div>
                     
                     <div style="margin-top: 50px; display: flex; gap: 20px;">
-                         <div class="svc-prev bn-btn bn-btn--outline-nav" style="min-width: 65px; padding: 15px;"><i class="fa fa-chevron-left"></i></div>
-                         <div class="svc-next bn-btn bn-btn--outline-nav" style="min-width: 65px; padding: 15px;"><i class="fa fa-chevron-right"></i></div>
+                         <div class="svc-prev bn-btn bn-btn--icon-only bn-btn--outline-nav" style="min-width: 65px; padding: 15px;"><i class="fa fa-chevron-left"></i></div>
+                         <div class="svc-next bn-btn bn-btn--icon-only bn-btn--outline-nav" style="min-width: 65px; padding: 15px;"><i class="fa fa-chevron-right"></i></div>
                     </div>
                 </div>
             </div>
@@ -526,7 +486,7 @@
     @include('frontend.component.cta', [
         'title' => $system['home_cta_title'] ?? 'Sẵn sàng để kiến tạo những giải pháp đột phá?',
         'desc' => 'Liên hệ với đội ngũ chuyên gia của chúng tôi để bắt đầu hành trình chuyển đổi số toàn diện cho doanh nghiệp của bạn.',
-        'btnText' => $system['home_cta_btn'] ?? 'TƯ VẤN NGAY MIỄN PHÍ'
+        'btnText' => $system['home_cta_btn'] ?? 'TƯ VẤN NGAY'
     ])
 </main>
 @endsection

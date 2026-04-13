@@ -7,8 +7,8 @@
                 <div class="bn-sec-desc">{{ $system['home_testi_desc'] ?? 'Những phản hồi chân thực từ khách hàng đã tin tưởng và đồng hành cùng chúng tôi.' }}</div>
             </div>
             <div class="bn-testimonials__nav" style="flex-shrink: 0;">
-                <button class="bn-btn bn-btn--outline" id="bn-testi-prev" style="border-radius:50%; width: 52px; height: 52px; padding: 0;"><i class="fa fa-arrow-left" style="margin:0;"></i></button>
-                <button class="bn-btn bn-btn--outline" id="bn-testi-next" style="border-radius:50%; width: 52px; height: 52px; padding: 0; margin-left:12px;"><i class="fa fa-arrow-right" style="margin:0;"></i></button>
+                <button class="bn-btn bn-btn--icon-only bn-nav-btn" id="bn-testi-prev"><i class="fa fa-arrow-left"></i></button>
+                <button class="bn-btn bn-btn--icon-only bn-nav-btn" id="bn-testi-next" style="margin-left:12px;"><i class="fa fa-arrow-right"></i></button>
             </div>
         </div>
         

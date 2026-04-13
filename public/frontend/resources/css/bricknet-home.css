@@ -4,23 +4,29 @@
   --bn-bg-gray: #f9fafb;
   --bn-bg-dark: #27303c;
   --bn-bg-darker: #1e252e;
-
   --bn-text-main: #4b5563;
   --bn-text-light: #9ca3af;
   --bn-title: #111827;
   --bn-title-darkmode: #f9fafb;
-
   --bn-accent-light: #ffe1d5;
   --bn-accent: #ff6842;
   --bn-accent-hover: #e05430;
-
   --bn-border: #e5e7eb;
 
   --bn-font-display: "Manrope", sans-serif;
   --bn-font-body: "Roboto", sans-serif;
 
-  --bn-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --bn-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --bn-radius-sm: 6px;
+  --bn-radius-md: 12px;
+  --bn-radius-lg: 20px;
+  --bn-radius-full: 9999px;
+
+  --bn-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --bn-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --bn-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+  --bn-section-padding: 60px 0;
+  --bn-section-padding-sm: 30px 0;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
@@ -50,9 +56,6 @@ img {
   height: auto;
 }
 
-/* =========================================
-   Layout Utilities
- ========================================= */
 .bn-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -60,7 +63,11 @@ img {
 }
 
 .bn-section {
-  padding: 60px 0;
+  padding: var(--bn-section-padding);
+}
+
+.bn-section-sm {
+  padding: var(--bn-section-padding-sm);
 }
 
 .bn-section-dark {
@@ -74,14 +81,15 @@ img {
   color: var(--bn-title-darkmode);
 }
 
-/* =========================================
-   Components
- ========================================= */
-/* Pill Label */
 .bn-pill-label {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 18px;
+  background: rgba(255, 104, 66, 0.08);
+  /* Light orange soft bg */
+  color: var(--bn-accent);
+  border: 1px solid rgba(255, 104, 66, 0.2);
+  border-radius: var(--bn-radius-full);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -90,22 +98,23 @@ img {
 }
 
 .bn-pill-label--outline {
+  background: transparent;
   border: 1px solid var(--bn-border);
   color: var(--bn-accent);
 }
 
 .bn-pill-label--dark {
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
 }
 
-/* Buttons */
 .bn-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 28px;
-  border-radius: 6px;
+  border-radius: var(--bn-radius-sm);
   font-family: var(--bn-font-display);
   font-weight: 600;
   font-size: 15px;
@@ -113,6 +122,39 @@ img {
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid transparent;
+}
+
+.bn-btn i {
+  margin-left: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.bn-btn--icon-only i {
+  margin-left: 0 !important;
+  color: var(--bn-accent) !important;
+}
+
+.bn-nav-btn {
+  border-radius: var(--bn-radius-full) !important;
+  width: 52px;
+  height: 52px;
+  padding: 0 !important;
+  background-color: #fff !important;
+  border-color: var(--bn-accent) !important;
+  box-shadow: var(--bn-shadow-sm);
+}
+
+.bn-nav-btn:hover {
+  background-color: var(--bn-accent-light) !important;
+}
+
+.bn-btn--shiny-outline i {
+  color: var(--bn-accent);
+}
+
+.bn-btn--shiny-outline:hover i {
+  color: #fff;
 }
 
 .bn-btn--primary {
@@ -124,17 +166,14 @@ img {
   background-color: var(--bn-accent-hover);
 }
 
-/* Project Section - Premium Dark Style (Matches Image 2) */
 .project-section {
   background-color: #1a2332;
-  /* Dark slate blue from Image 2 */
   padding: 100px 0;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   overflow: hidden;
 }
 
-/* Standardized Section Headers */
 .bn-sec-head {
   margin-bottom: 60px;
 }
@@ -166,6 +205,18 @@ img {
   letter-spacing: -2px;
 }
 
+@media (max-width: 991px) {
+  .bn-sec-title--big {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bn-sec-title--big {
+    font-size: 2.15rem;
+  }
+}
+
 .bn-sec-desc {
   margin-top: 20px;
   font-size: 1.1rem;
@@ -179,7 +230,6 @@ img {
   max-width: 450px;
 }
 
-/* Maintain dark mode specific colors in headers */
 .bn-section-dark .bn-sec-title {
   color: var(--bn-title-darkmode);
 }
@@ -204,11 +254,11 @@ img {
 
 .project-image-box {
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--bn-radius-md);
   overflow: hidden;
   height: 520px;
   width: 100%;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--bn-shadow-md);
 }
 
 .project-image-box img {
@@ -285,7 +335,6 @@ img {
   font-weight: 400;
 }
 
-/* Custom Pagination logic for segment bar - Matching Image 2 */
 .project-pagination-container {
   display: flex;
   justify-content: flex-end;
@@ -329,12 +378,13 @@ img {
   top: 0;
   height: 100%;
   width: 100%;
-  background: #ffffff;
+  background: var(--bn-accent);
   border-radius: 2px;
 }
 
 .progress-step.is-active .step-num {
   opacity: 1;
+  color: var(--bn-accent);
 }
 
 @media (max-width: 1199px) {
@@ -439,7 +489,6 @@ img {
 
 .bn-btn i {
   margin-left: 8px;
-  font-size: 14px;
 }
 
 /* =========================================
@@ -527,8 +576,8 @@ img {
 .bn-hero__title {
   color: #fff;
   font-size: 4.5rem;
-  line-height: 1.1;
-  margin-bottom: 24px;
+  line-height: 1.3;
+  margin-bottom: 20px;
 }
 
 .bn-hero__desc {
@@ -562,9 +611,6 @@ img {
   margin: 10px;
 }
 
-/* =========================================
-   About
- ========================================= */
 .bn-about {
   padding: 100px 0;
 }
@@ -598,6 +644,11 @@ img {
   padding-right: 20px;
 }
 
+.bn-about__stat:not(:first-child) {
+  border-left: 1px solid var(--bn-border);
+  padding-left: 20px;
+}
+
 .bn-about__stat-num {
   font-size: 3rem;
   font-weight: 700;
@@ -612,9 +663,6 @@ img {
   color: var(--bn-text-main);
 }
 
-/* =========================================
-   Services
- ========================================= */
 .bn-services {
   background-color: var(--bn-bg-gray);
   text-align: center;
@@ -664,12 +712,9 @@ img {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--bn-radius-md);
 }
 
-/* =========================================
-   Features
- ========================================= */
 .bn-features {
   padding: 100px 0;
 }
@@ -696,7 +741,7 @@ img {
 .bn-features__items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
 }
 
 .bn-feature__icon {
@@ -721,28 +766,16 @@ img {
   font-size: 14px;
 }
 
-/* =========================================
-   Projects (Consolidated into Premium Style)
- ========================================= */
-/* Consolidated below main project section */
-
-/* =========================================
-   Process
- ========================================= */
 .bn-process__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+  align-items: start;
 }
 
-.bn-process__title {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.bn-process__desc {
-  font-size: 1.1rem;
-  margin-bottom: 40px;
+.bn-process__left {
+  position: sticky;
+  top: 120px;
 }
 
 .bn-process-steps {
@@ -750,8 +783,41 @@ img {
 }
 
 .bn-process-step {
-  padding: 30px 0;
+  padding: 45px 0;
   border-bottom: 1px solid var(--bn-border);
+  text-align: left;
+}
+
+.bn-process-step__num {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--bn-font-display);
+  color: var(--bn-title);
+}
+
+.bn-process-step__num .num-separator {
+  color: var(--bn-text-light);
+}
+
+.bn-process-step__num .step-arrow {
+  margin-left: 15px;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.bn-process-step__title {
+  font-size: 2.25rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #27303c;
+}
+
+.bn-process-step__desc {
+  font-size: 16px;
+  color: var(--bn-text-main);
+  line-height: 1.6;
 }
 
 .bn-process-step__head {
@@ -973,9 +1039,6 @@ img {
   padding-bottom: 0;
 }
 
-/* =========================================
-   CTA Section
- ========================================= */
 .bn-cta {
   background-color: #6C8B9F;
   /* Tealish hero */
@@ -991,9 +1054,6 @@ img {
   margin: 0 auto 40px;
 }
 
-/* =========================================
-   Footer
- ========================================= */
 .bn-footer {
   background-color: var(--bn-bg-darker);
   color: var(--bn-text-light);
@@ -1075,8 +1135,10 @@ img {
   font-size: 13px;
 }
 
-/* Responsive */
 @media (max-width: 991px) {
+  .bn-section {
+    padding: var(--bn-section-padding-sm);
+  }
 
   .bn-services__grid,
   .bn-about__stats,
@@ -1086,19 +1148,55 @@ img {
   .bn-pricing__grid,
   .bn-blog__grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bn-process__left {
+    position: static;
+    margin-bottom: 0;
+  }
+
+  .bn-process-step {
+    padding: 30px 0;
+  }
+
+  .bn-process-step__title {
+    font-size: 1.75rem;
+  }
+
+  .bn-testi-card {
+    padding: 20px 10px;
+  }
+
+  .bn-features__items {
+    grid-template-columns: 1fr;
   }
 
   .bn-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .bn-about__top {
+  .bn-about__top,
+  .bn-sec-head--split {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
   }
 
-  .bn-about__title {
-    margin-bottom: 20px;
+  .bn-about__stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .bn-about__stat {
+    flex: 1 1 calc(50% - 20px);
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .bn-about__stat:nth-child(even) {
+    padding-left: 20px !important;
+    border-left: 1px solid var(--bn-border) !important;
   }
 
   .bn-about__stat-num {
@@ -1122,8 +1220,35 @@ img {
   .bn-process__title,
   .bn-testimonials__title,
   .bn-blog__title,
+  .bn-sec-title,
   .bn-cta__title {
-    font-size: 2.5rem;
+    font-size: 1.85rem;
+  }
+
+  .bn-blog-title {
+    font-size: 1.5rem !important;
+  }
+
+  .bn-blog-main__img-wrapper {
+    height: 300px !important;
+  }
+
+  .bn-about__stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .bn-about__stat {
+    padding: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid var(--bn-border) !important;
+    padding-bottom: 20px !important;
+  }
+
+  .bn-about__stat:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
   }
 
   .bn-footer-grid {
@@ -1132,5 +1257,17 @@ img {
 
   .bn-nav-pill {
     display: none;
+  }
+
+  .bn-blog__grid {
+    gap: 30px;
+  }
+
+  .bn-blog-main__img-wrapper {
+    height: 250px !important;
+  }
+
+  .bn-blog-title {
+    font-size: 1.35rem !important;
   }
 }

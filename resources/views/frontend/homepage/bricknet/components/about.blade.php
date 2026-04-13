@@ -20,15 +20,15 @@
                 <div class="bn-about__stat-num" style="color: var(--bn-accent);">{{ $system['home_stat_1_num'] ?? '10+' }}</div>
                 <div class="bn-about__stat-label">{{ $system['home_stat_1_label'] ?? 'Năm Kinh Nghiệm' }}</div>
             </div>
-            <div class="bn-about__stat" style="border-left: 1px solid var(--bn-border); padding-left: 20px;">
+            <div class="bn-about__stat">
                 <div class="bn-about__stat-num" style="color: var(--bn-title);">{{ $system['home_stat_2_num'] ?? '1500+' }}</div>
                 <div class="bn-about__stat-label">{{ $system['home_stat_2_label'] ?? 'Dự Án Hoàn Thành' }}</div>
             </div>
-            <div class="bn-about__stat" style="border-left: 1px solid var(--bn-border); padding-left: 20px;">
+            <div class="bn-about__stat">
                 <div class="bn-about__stat-num" style="color: var(--bn-accent);">{{ $system['home_stat_3_num'] ?? '4.8/5' }}</div>
                 <div class="bn-about__stat-label">{{ $system['home_stat_3_label'] ?? 'Điểm Hài Lòng Khách Hàng' }}</div>
             </div>
-            <div class="bn-about__stat" style="border-left: 1px solid var(--bn-border); padding-left: 20px;">
+            <div class="bn-about__stat">
                 <div class="bn-about__stat-num" style="color: var(--bn-title);">{{ $system['home_stat_4_num'] ?? '98%' }}</div>
                 <div class="bn-about__stat-label">{{ $system['home_stat_4_label'] ?? 'Tỉ lệ Thành Công' }}</div>
             </div>

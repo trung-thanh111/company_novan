@@ -22,12 +22,16 @@
         .bn-project-detail .page-breadcrumb {
             width: 100%;
             background: #fff !important;
-            padding: 10px 24px !important;
+            padding: 10px 20px !important;
             border-radius: 5px !important;
             box-shadow: 0 5px 10px rgba(0,0,0,0.06) !important;
             margin-bottom: 20px !important;
             border: 1px solid rgba(0,0,0,0.03) !important;
-            display: inline-block !important;
+            display: block !important;
+        }
+        .bn-project-detail .page-breadcrumb ul {
+            flex-wrap: wrap;
+            row-gap: 5px;
         }
         .bn-project-detail .page-breadcrumb .uk-container {
             padding: 0 !important;
@@ -303,10 +307,16 @@
 
         /* ── Responsive ── */
         @media (max-width: 991px) {
+            .bn-project-header {
+                padding: 100px 0 30px;
+            }
             .bn-project-header__top {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                gap: 15px;
+            }
+            .bn-project-header__title {
+                font-size: 28px;
             }
             .bn-project-meta {
                 grid-template-columns: repeat(2, 1fr);

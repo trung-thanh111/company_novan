@@ -5,7 +5,7 @@
                 <h2 class="bn-cta-card__title">{{ $title ?? 'Sẵn sàng để kiến tạo những giải pháp đột phá?' }}</h2>
                 <p class="bn-cta-card__desc">{{ $desc ?? 'Liên hệ với đội ngũ chuyên gia của chúng tôi để bắt đầu hành trình chuyển đổi số toàn diện cho doanh nghiệp của bạn.' }}</p>
                 <a href="{{ $btnLink ?? write_url('lien-he') }}" class="bn-btn bn-btn--accent bn-cta-card__btn">
-                    {{ $btnText ?? 'TƯ VẤN NGAY MIỄN PHÍ' }}
+                    {{ $btnText ?? 'TƯ VẤN NGAY' }}
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
@@ -25,19 +25,19 @@
 
     <style>
         .bn-cta-section {
-            padding: 80px 0;
+            padding: var(--bn-section-padding);
             background: #fff;
         }
         .bn-cta-card {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
             background: #fdf8f4; /* Soft cream/beige */
-            border-radius: 40px;
+            border-radius: var(--bn-radius-lg);
             overflow: hidden;
             min-height: 480px;
         }
         .bn-cta-card__left {
-            padding: 80px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,7 +103,7 @@
                 border-radius: 24px;
             }
             .bn-cta-card__left {
-                padding: 40px;
+                padding: 10px;
             }
             .bn-cta-card__title {
                 font-size: 32px;

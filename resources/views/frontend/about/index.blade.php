@@ -344,6 +344,12 @@
             min-height: 500px;
         }
 
+        .bn-project-featured-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
         /* Responsiveness */
         @media (max-width: 1200px) {
             .bn-story-grid, .bn-project-split, .bn-cta-split-grid {
@@ -354,6 +360,15 @@
             }
             .bn-project-split__gallery {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .bn-project-featured-title {
+                font-size: 2rem !important;
+            }
+            .bn-section-projects-v2 .bn-sec-title {
+                font-size: 2.15rem !important;
             }
         }
     </style>
@@ -443,7 +458,7 @@
             <div class="bn-container">
                 <div class="bn-section-video__content">
                     <span class="bn-pill-label bn-pill-label--outline" style="border-color: var(--bn-accent); color: var(--bn-accent);">Khám Phá Novan</span>
-                    <h2 class="bn-project-featured-title" style="margin-top: 20px; font-size: 3.5rem; color: #fff;">Sự Giao Thoa Giữa Công Nghệ & Nghệ Thuật</h2>
+                    <h2 class="bn-project-featured-title" style="margin-top: 20px; color: #fff;">Sự Giao Thoa Giữa Công Nghệ & Nghệ Thuật</h2>
                     <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 20px auto 40px; color: #cbd5e1; line-height: 1.6;">
                         Mỗi dòng code, mỗi giải pháp chúng tôi tạo ra đều hướng tới một trải nghiệm người dùng hoàn hảo và giá trị thực chất cho khách hàng.
                     </p>
@@ -462,7 +477,7 @@
                     <div class="bn-project-split__info" data-reveal="left">
                         <div>
                             <span class="bn-pill-label bn-pill-label--outline">Dự án chọn lọc</span>
-                            <h2 class="bn-sec-title" style="margin: 25px 0; font-size: 4rem; line-height: 1.1;">Thành tựu & <br>Dấu ấn Thực tế</h2>
+                            <h2 class="bn-sec-title" style="margin: 25px 0; line-height: 1.1;">Thành tựu & <br>Dấu ấn Thực tế</h2>
                             <p class="bn-sec-desc" style="margin-bottom: 40px;">
                                 Minh chứng cho năng lực triển khai và tư vấn chiến lược của đội ngũ Novan qua những dự án quy mô và phức tạp nhất.
                             </p>

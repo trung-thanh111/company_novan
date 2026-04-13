@@ -9,7 +9,6 @@
 @endphp
 
 <section class="bn-hero">
-    <!-- Swiper Background -->
     <div class="swiper bn-hero-bg-slider" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1;">
         <div class="swiper-wrapper">
             @foreach($heroImages as $img)
@@ -33,7 +32,7 @@
         </p>
         
         <a href="/lien-he.html" class="bn-btn bn-btn--white">
-            {{ $system['home_hero_btn'] ?? 'Nhận báo giá ngay' }} <i class="fa fa-arrow-right"></i>
+            {{ $system['home_hero_btn'] ?? 'Nhận báo giá ngay' }} <i class="fa fa-arrow-right uk-text-muted"></i>
         </a>
     </div>
 </section>

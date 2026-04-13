@@ -11,27 +11,22 @@
             padding: 24px 0;
         }
 
-        .bn-header .bn-nav-pill li > a,
-        .bn-header .bn-btn--shiny-outline {
+        .bn-header .bn-nav-pill li > a {
             color: #ffffff !important;
         }
-
-        .bn-header .bn-btn--shiny-outline {
-            color: var(--bn-accent) !important;
-        }
-        .bn-header .bn-btn--shiny-outline:hover{
-            color: #fff;
-        }
-         .bn-btn .bn-btn--shiny-outline{
-            color: var(--bn-accent) !important;
-         }
 
         .bn-header--sticky {
             background: #0f172a !important;
             opacity: 0.98 !important;
             backdrop-filter: blur(16px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--bn-shadow-md);
             padding: 16px 0;
+        }
+
+        /* Dropdown fix for radius */
+        .bn-header .bn-nav-pill .dropdown-menu {
+            border-radius: var(--bn-radius-md);
+            box-shadow: var(--bn-shadow-md);
         }
 
         /* ── Blog Components ── */
@@ -48,14 +43,14 @@
 
         .bn-blog-card {
             background: #fff;
-            border-radius: 20px;
+            border-radius: var(--bn-radius-md);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             height: 100%;
             border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+            box-shadow: var(--bn-shadow-sm);
         }
         .bn-blog-card:hover {
             transform: translateY(-8px);
@@ -155,7 +150,7 @@
         .bn-typography h3 { font-size: 26px; }
         .bn-typography p { margin-bottom: 24px; }
         .bn-typography img {
-            border-radius: 16px;
+            border-radius: var(--bn-radius-md);
             margin: 40px 0;
             width: 100%;
             height: auto;
@@ -164,7 +159,7 @@
             border-left: 4px solid var(--bn-accent, #e65c00);
             padding: 16px 32px;
             background: #f8fafc;
-            border-radius: 0 16px 16px 0;
+            border-radius: 0 var(--bn-radius-md) var(--bn-radius-md) 0;
             font-style: italic;
             margin: 40px 0;
         }
@@ -200,8 +195,8 @@
             padding: 10px 8px;
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: var(--bn-radius-md);
+            box-shadow: var(--bn-shadow-lg);
             z-index: 9999;
             max-height: min(60vh, 520px);
             overflow: auto;
@@ -261,23 +256,43 @@
         }
 
         @media (max-width: 991px) {
-            .bn-header .bn-nav-pill>ul {
-                flex-wrap: wrap;
+            .bn-header {
+                padding: 16px 0;
             }
-            .bn-header .bn-nav-pill .dropdown-menu {
-                position: static;
-                display: block;
-                min-width: 0;
-                margin-top: 8px;
-                padding: 8px 0 0;
-                border: 0;
-                background: transparent;
-                box-shadow: none;
+            .bn-header__inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
             }
-            .bn-header .bn-nav-pill .dropdown-menu a {
-                padding: 8px 0 8px 14px;
-                white-space: normal;
+            .bn-header .bn-nav-pill,
+            .bn-header .bn-btn--shiny-outline {
+                display: none !important;
             }
+            .bn-header__mobile-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                color: #fff;
+                cursor: pointer;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+            }
+            .bn-header__mobile-toggle:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: scale(1.05);
+            }
+            .bn-header__logo img {
+                height: 32px;
+                width: auto;
+            }
+        }
+
+        .bn-header__mobile-toggle {
+            display: none;
         }
     </style>
     <div class="bn-container">
@@ -285,6 +300,14 @@
             <a href="/" class="bn-header__logo">
                 <img src="{{ $system['homepage_logo'] ?? asset('frontend/resources/images/logo.png') }}" alt="{{ $system['homepage_brand'] ?? 'Bricknet' }}">
             </a>
+
+            <div class="bn-header__mobile-toggle" data-uk-offcanvas="{target:'#mobileCanvas'}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
 
             <nav class="bn-nav-pill">
                 @if(isset($menu['main-menu']))
@@ -371,3 +394,5 @@
         })();
     </script>
 </header>
+
+@include('frontend.component.header-mobile')

@@ -9,32 +9,6 @@ return [
             'class' => 'special'
         ],
         [
-            'title' => 'Bài viết',
-            'icon' => 'fa fa-file',
-            'name' => ['post'],
-            'subModule' => [
-                [
-                    'title' => 'Bài viết',
-                    'route' => 'post/index'
-                ],
-                [
-                    'title' => 'Nhóm bài viết',
-                    'route' => 'post/catalogue/index'
-                ],
-            ]
-        ],
-        [
-            'title' => 'Đánh giá',
-            'icon' => 'fa fa-star',
-            'name' => ['review'],
-            'subModule' => [
-                [
-                    'title' => 'Danh sách đánh giá',
-                    'route' => 'review/index'
-                ],
-            ]
-        ],
-        [
             'title' => 'Dịch Vụ',
             'icon' => 'fa fa-briefcase',
             'name' => ['service'],
@@ -146,6 +120,32 @@ return [
                 [
                     'title' => 'Danh sách',
                     'route' => 'work-process/index'
+                ],
+            ]
+        ],
+        [
+            'title' => 'Bài viết',
+            'icon' => 'fa fa-file',
+            'name' => ['post'],
+            'subModule' => [
+                [
+                    'title' => 'Bài viết',
+                    'route' => 'post/index'
+                ],
+                [
+                    'title' => 'Nhóm bài viết',
+                    'route' => 'post/catalogue/index'
+                ],
+            ]
+        ],
+        [
+            'title' => 'Đánh giá',
+            'icon' => 'fa fa-star',
+            'name' => ['review'],
+            'subModule' => [
+                [
+                    'title' => 'Danh sách đánh giá',
+                    'route' => 'review/index'
                 ],
             ]
         ],

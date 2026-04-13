@@ -266,6 +266,9 @@
 
         /* ── Responsive ── */
         @media (max-width: 992px) {
+            .bn-contact-form-wrapper {
+                padding: 15px;
+            }
             .bn-contact-grid {
                 grid-template-columns: 1fr;
             }

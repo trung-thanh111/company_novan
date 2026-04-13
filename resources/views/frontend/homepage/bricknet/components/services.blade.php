@@ -18,15 +18,13 @@
                 <article class="bn-service-card">
                     <div class="bn-service-card__num">{{ $num }}</div>
                     <h3 class="bn-service-card__title">{{ $name }}</h3>
-                    <p class="bn-service-card__desc">{{ $desc }}</p>
-                    @if(!empty($image))
-                        <img src="{{ asset($image) }}" class="bn-service-card__img" alt="{{ $name }}" loading="lazy">
-                    @endif
+                    <p class="bn-service-card__desc">{{ strip_tags($desc) }}</p>
+                    <img src="{{ $image }}" class="bn-service-card__img" alt="{{ $name }}" loading="lazy">
                 </article>
             @endforeach
         </div>
         <div style="margin-top: 18px;">
-                <a href="/dich-vu.html" class="bn-btn bn-btn--outline">Xem thêm <i class="fa fa-arrow-right"></i></a>
-            </div>
+            <a href="/dich-vu.html" class="bn-btn bn-btn--shiny-outline">Xem thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
     </div>
 </section>

@@ -10,17 +10,9 @@
             <li>
                 <span class="slash">/</span>
             </li>
-            @if(!is_null($breadcrumb))
-                @foreach($breadcrumb as $key => $val)
-                    @php
-                        $name = $val->languages->first()->pivot->name;
-                        $canonical = write_url($val->languages->first()->pivot->canonical, true, true);
-                    @endphp
-                    <li>
-                        <a href="{{ $canonical }}" title="{{ $name }}">{{ $name }}</a>
-                    </li>
-                @endforeach
-            @endif
+            <li>
+                <span>{{ $modelName }}</span>
+            </li>
         </ul>
     </div>
 </div>
